@@ -18,7 +18,7 @@ cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
     cronjob = new cronJob(
-        cronTime: "* * * * * *"     # 実行時間
+        cronTime: "00,10,20,30,40,50 * * * * *"     # 実行時間
         start:    true              # すぐにcronのjobを実行するか
         timeZone: "Asia/Tokyo"      # タイムゾーン指定
         onTick: ->                  # 時間が来た時に実行する処理
@@ -26,7 +26,5 @@ module.exports = (robot) ->
             min = d.getMinutes()
             sec = d.getSeconds()
             message = "#{sec}secなう！"
-#            robot.messageRoom process.env.HUBOT_TWITTER_MENTION_ROOM, message
-#            robot.send {room: 'Twitter'}, "#{sec}秒なう！"
-            robot.send {room: 'Twitter'}, "#{sec}秒めう！"
+            robot.send {user:{user:'susunshun_o'},screen_name:'susunshun_o', room: 'Twitter'}, "#{sec}秒なう！"
     )
