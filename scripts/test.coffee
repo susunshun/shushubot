@@ -13,3 +13,18 @@ module.exports = (robot) ->
         min   = d.getMinutes()
         sec   = d.getSeconds()
         msg.send " #{hour}時#{min}分#{sec}秒"
+
+cronJob = require('cron').CronJob
+
+module.exports = (robot) ->
+    cronjob = new cronJob(
+        cronTime: "* * * * * *"     # 実行時間
+        start:    true              # すぐにcronのjobを実行するか
+        timeZone: "Asia/Tokyo"      # タイムゾーン指定
+        onTick: ->                  # 時間が来た時に実行する処理
+            d = new Date
+            min = d.getMinutes()
+            sec = d.getSeconds()
+            message = "#{sec}secなう！"
+            robot.messageRoom process.env.HUBOT_TWITTER_MENTION_ROOM, message
+    )
