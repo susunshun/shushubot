@@ -26,5 +26,6 @@ module.exports = (robot) ->
             min = d.getMinutes()
             sec = d.getSeconds()
             message = "#{sec}secなう！"
-            robot.messageRoom process.env.HUBOT_TWITTER_MENTION_ROOM, message
+#            robot.messageRoom process.env.HUBOT_TWITTER_MENTION_ROOM, message
+            robot.send {room: "#ROOM_NAME_HERE"}, "#{sec}秒なう！"
     )
