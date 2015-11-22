@@ -20,7 +20,7 @@
     "hubot-twitter": "^2.1.1",
     "cron": "^1.0.5",
     "time": "^0.11.0"
-  },
+},
   "engines": {
     "node": "0.10.x"
   }

@@ -1,0 +1,17 @@
+cronJob = require('cron').CronJob
+
+module.exports = (robot) ->
+    cronjob = new cronJob(
+        cronTime: "0 0 9,12,15,19 * * *" # 秒 分 時・・・
+        start:    true              # すぐにcronのjobを実行するか
+        timeZone: "Asia/Tokyo"
+        onTick: ->                  
+            request = robot.http("http://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=119543b8a3d18b744152cca11545029c")
+                           .get()
+            request (err, res, body) ->
+                json = JSON.parse body
+                name = json['name']
+                weather = json['weather'][0]['main']
+                message = "#{name}の天気は #{weather}"
+                robot.send {user:{user:'susunshun_o'},screen_name:'susunshun_o', room: 'Twitter'},message
+    )
