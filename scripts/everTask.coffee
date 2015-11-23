@@ -7,7 +7,7 @@ module.exports = (robot) ->
         start:    true              # すぐにcronのjobを実行するか
         timeZone: "Asia/Tokyo"
         onTick: ->                  
-            request = robot.http("http://localhost:4567/random")
+            request = robot.http("https://everapi.herokuapp.com/random")
                            .get()
             request (err, res, body) ->
                 json = JSON.parse body
