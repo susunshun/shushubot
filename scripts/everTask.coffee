@@ -2,8 +2,8 @@ cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
     cronjob = new cronJob(
-#        cronTime: "0 0 9,12,15,19 * * *" # 秒 分 時・・・
-        cronTime: "0,10,20,30,40,50 * * * * *" # デバッグ用タスク
+        cronTime: "0 0,15,30,45 * * * *" # 秒 分 時・・・
+#        cronTime: "0,10,20,30,40,50 * * * * *" # デバッグ用タスク
         start:    true              # すぐにcronのjobを実行するか
         timeZone: "Asia/Tokyo"
         onTick: ->                  
